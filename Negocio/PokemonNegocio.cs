@@ -13,12 +13,15 @@ namespace Negocio
     public class PokemonNegocio
     {
         private AccesoDatos datos = new AccesoDatos();
-        public List<Pokemon> listar()
+        public List<Pokemon> listar(string id="")
         {
             List<Pokemon> lista = new List<Pokemon>();
             try
             {
-                datos.setearConsulta("Select Numero, Nombre, P.Descripcion, UrlImagen, E.Descripcion Tipo, D.Descripcion Debilidad, P.IdTipo, P.IdDebilidad, P.Id From POKEMONS P, ELEMENTOS E, ELEMENTOS D where E.Id = P.IdTipo and D.Id=IdDebilidad and P.Activo=1");
+                if(id != "")
+                    datos.setearConsulta("Select Numero, Nombre, P.Descripcion, UrlImagen, E.Descripcion Tipo, D.Descripcion Debilidad, P.IdTipo, P.IdDebilidad, P.Id From POKEMONS P, ELEMENTOS E, ELEMENTOS D where E.Id = P.IdTipo and D.Id=IdDebilidad and P.Activo=1 AND P.Id = " + id);
+                else
+                    datos.setearConsulta("Select Numero, Nombre, P.Descripcion, UrlImagen, E.Descripcion Tipo, D.Descripcion Debilidad, P.IdTipo, P.IdDebilidad, P.Id From POKEMONS P, ELEMENTOS E, ELEMENTOS D where E.Id = P.IdTipo and D.Id=IdDebilidad and P.Activo=1");
                 datos.ejecutarLectura();
 
                 while (datos.Lector.Read())
@@ -115,6 +118,31 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+        public void agregarConSP(Pokemon nuevo)
+        {
+            try
+            {
+                datos.setearProcedimiento("storedAltaPokemon");
+                datos.setearParametro("@Numero", nuevo.Numero);
+                datos.setearParametro("@Nombre", nuevo.Nombre);
+                datos.setearParametro("@desc", nuevo.Descripcion);
+                datos.setearParametro("@img", nuevo.UrlImagen);
+                datos.setearParametro("@idTipo", nuevo.Tipo.Id);
+                datos.setearParametro("@idDebilidad", nuevo.Debilidad.Id);
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
         public void modificar(Pokemon modificar)
         {
             try
@@ -140,7 +168,31 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+        public void modificarConSP(Pokemon modificar)
+        {
+            try
+            {
+                datos.setearProcedimiento("storedModificarPokemon");
+                datos.setearParametro("@numero", modificar.Numero);
+                datos.setearParametro("@nombre", modificar.Nombre);
+                datos.setearParametro("@desc", modificar.Descripcion);
+                datos.setearParametro("@img", modificar.UrlImagen);
+                datos.setearParametro("@idTipo", modificar.Tipo.Id);
+                datos.setearParametro("@idDebilidad", modificar.Debilidad.Id);
+                datos.setearParametro("@id", modificar.Id);
+                datos.ejecutarAccion();
 
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.cerrarConexion();
+            }
+        }
         public void eliminar(int id)
         {
             try
@@ -263,5 +315,7 @@ namespace Negocio
                 datos.cerrarConexion();
             }
         }
+
+        
     }
 }

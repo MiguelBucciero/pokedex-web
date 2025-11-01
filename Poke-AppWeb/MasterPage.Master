@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Pokedex Web</title>
@@ -33,12 +33,6 @@
             </asp:ContentPlaceHolder>
         </div>
 
-        <footer>
-            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-                © 2025 Copyright: Miguel Angel Bucciero
-                    <a class="text-dark" href="https://mdbootstrap.com/">PokedexWeb.com</a>
-            </div>
-        </footer>
     </form>
 </body>
 </html>
