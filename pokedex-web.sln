@@ -5,9 +5,9 @@ VisualStudioVersion = 17.14.36518.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pokedex-web", "Poke-AppWeb\pokedex-web.csproj", "{C761E049-EE41-4BA8-950D-8A1850FC2271}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dominio", "..\..\..\..\..\Cursos C# MaxiPrograma\Experiencia Universidad [Noviembre 2024]\Programacion\Actividad 2\TPFinalNivel2_Bucciero\dominio\dominio.csproj", "{1710DB59-8D36-449E-85DC-D0E37D08A6B9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.csproj", "{2C469250-4485-41C1-9516-C7751D253106}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "negocio", "..\..\..\..\..\Cursos C# MaxiPrograma\Experiencia Universidad [Noviembre 2024]\Programacion\Actividad 2\TPFinalNivel2_Bucciero\negocio\negocio.csproj", "{087FB677-4B08-4C5F-99C2-CDAA866789DB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Negocio", "Negocio\Negocio.csproj", "{2FF761BA-0696-4FF2-B34E-60AA30DECDD5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +19,14 @@ Global
 		{C761E049-EE41-4BA8-950D-8A1850FC2271}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C761E049-EE41-4BA8-950D-8A1850FC2271}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C761E049-EE41-4BA8-950D-8A1850FC2271}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1710DB59-8D36-449E-85DC-D0E37D08A6B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1710DB59-8D36-449E-85DC-D0E37D08A6B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1710DB59-8D36-449E-85DC-D0E37D08A6B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1710DB59-8D36-449E-85DC-D0E37D08A6B9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{087FB677-4B08-4C5F-99C2-CDAA866789DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{087FB677-4B08-4C5F-99C2-CDAA866789DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{087FB677-4B08-4C5F-99C2-CDAA866789DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{087FB677-4B08-4C5F-99C2-CDAA866789DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C469250-4485-41C1-9516-C7751D253106}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C469250-4485-41C1-9516-C7751D253106}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C469250-4485-41C1-9516-C7751D253106}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C469250-4485-41C1-9516-C7751D253106}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2FF761BA-0696-4FF2-B34E-60AA30DECDD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FF761BA-0696-4FF2-B34E-60AA30DECDD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FF761BA-0696-4FF2-B34E-60AA30DECDD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FF761BA-0696-4FF2-B34E-60AA30DECDD5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
