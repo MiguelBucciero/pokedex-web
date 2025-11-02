@@ -11,9 +11,11 @@ namespace Poke_AppWeb
 {
     public partial class FormularioPokemon : System.Web.UI.Page
     {
+        public bool ConfirmaEliminacion { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
             txtId.Enabled = false;
+            ConfirmaEliminacion = false;
             try
             {
                 if (!IsPostBack)
@@ -38,6 +40,7 @@ namespace Poke_AppWeb
                     PokemonNegocio negocio = new PokemonNegocio();
                     List<Pokemon> lista = negocio.listar(id);
                     Pokemon seleccionado = lista[0];
+                    Session["PokemonSeleccionado"] = seleccionado;
 
                     txtId.Text = id;
                     txtNumero.Text = seleccionado.Numero.ToString();
@@ -47,6 +50,8 @@ namespace Poke_AppWeb
                     ddlTipo.SelectedValue = seleccionado.Tipo.Id.ToString();
                     ddlDebilidad.SelectedValue = seleccionado.Debilidad.Id.ToString();
                     imgPokemon.ImageUrl = seleccionado.UrlImagen;
+                    if (!seleccionado.Activo)
+                        btnInactivar.Text = "Reactivar";
                 }
             }
             catch (Exception ex)
@@ -88,6 +93,49 @@ namespace Poke_AppWeb
                 else
                     negocio.agregarConSP(pokemon);
 
+                Response.Redirect("PokemonLista.aspx", false);
+            }
+            catch (Exception ex)
+            {
+                Session.Add("Error", ex);
+                throw;
+                //rediccion pantalla
+            }
+        }
+
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            ConfirmaEliminacion = true;
+        }
+
+        protected void btnConfirmaEliminacion_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (chkConfirmarEliminacion.Checked)
+                {
+                    PokemonNegocio pokemonNegocio = new PokemonNegocio();
+                    pokemonNegocio.eliminar(int.Parse(txtId.Text));
+                    Response.Redirect("PokemonLista.aspx", false);
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                Session.Add("Error", ex);
+                throw;
+                //rediccion pantalla
+            }
+        }
+
+        protected void btnInactivar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                PokemonNegocio pokemonNegocio = new PokemonNegocio();
+                Pokemon seleccionado = (Pokemon)Session["PokemonSeleccionado"];
+
+                pokemonNegocio.eliminarLogico(seleccionado.Id, !seleccionado.Activo);
                 Response.Redirect("PokemonLista.aspx", false);
             }
             catch (Exception ex)
