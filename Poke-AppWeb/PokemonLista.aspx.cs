@@ -15,6 +15,11 @@ namespace Poke_AppWeb
         public bool FiltroAvanzado { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Seguridad.esAdmin(Session["trainee"]))
+            {
+                Session.Add("error", "No tienes permisos para acceder a esta sección.");
+                Response.Redirect("Error.aspx", false);
+            }
             FiltroAvanzado = chkAvanzado.Checked;
             PokemonNegocio negocio = new PokemonNegocio();
             Session.Add("listaPokemons", negocio.listarConSp());
